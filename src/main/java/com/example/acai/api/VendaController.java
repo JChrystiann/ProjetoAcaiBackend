@@ -16,40 +16,42 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.acai.domain.pedido.Pedido;
 import com.example.acai.domain.pedido.PedidoService;
+import com.example.acai.domain.venda.ServicoVenda;
+import com.example.acai.domain.venda.Venda;
 
 
 
 
 @RestController
-@RequestMapping("/api/v1/pedidos")
-public class PedidoController {
+@RequestMapping("/api/v1/vendas")
+public class VendaController {
 	@Autowired
-	private PedidoService service;
+	private ServicoVenda serviceV;
 	
 	@GetMapping()
-	public Iterable<Pedido> get() {
-		return service.getPedido();
+	public Iterable<Venda> get() {
+		return serviceV.getVenda();
 		
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Pedido> get(@PathVariable("id")Long id) {
-		return service.getPedidobyId(id);
+	public Optional<Venda> get(@PathVariable("id")Long id) {
+		return serviceV.getVendabyId(id);
 		
 	}
 	
-	@GetMapping("/mesa/{mesa}")
-	public Iterable<Pedido> getPedidoporMesa(@PathVariable("mesa")Long mesa) {
-		return service.getPedidobyMesa(mesa);
-		
-	}
+	
+	
+	
+	
 	@PostMapping
-	public String post(@RequestBody Pedido pedido) {
-		Pedido p= service.save(pedido);
+	public String post(@RequestBody Venda venda) {
+		Venda v= serviceV.save(venda);
 		
-		return "Pedido Realizado com Sucesso: Anote seu numero de Pedido: " + p.getId();
+		return "Venda Nº " + v.getIdVenda() + " Cadastrada com Sucesso:  ";
 	}
 	
+	/*
 	@PutMapping("/{id}")
 	public String atualizar(@PathVariable("id") Long id,@RequestBody Pedido pedido) {
 		Pedido p = service.update(pedido,id);
@@ -65,7 +67,7 @@ public class PedidoController {
 	}
 	
 	
-	/*
+	
 	@PostMapping("/login")
 	public String login(@RequestParam("login")String login, @RequestParam("senha")String senha) {
 		return "Login: "+login+" Senha: "+ senha;

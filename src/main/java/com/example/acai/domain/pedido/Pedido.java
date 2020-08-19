@@ -1,4 +1,4 @@
-package com.example.acai.domain;
+package com.example.acai.domain.pedido;
 
 import javax.persistence.*;
 
@@ -25,14 +25,19 @@ public class Pedido {
 	private float totalPed;
 	private String dataPedido;
 	private String horaPedido;
+	private String status,obsPedido, nomeApPedido;
+	
+	
 	
 	
 	public Pedido() {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+
 	public Pedido(Long id, String nome, Long mesa, Long cliente, Long colaborador, float totalPed, String dataPedido,
-			String horaPedido) {
+			String horaPedido, String status, String obsPedido, String nomeApPedido) {
 		
 		this.id = id;
 		this.nome = nome;
@@ -42,7 +47,12 @@ public class Pedido {
 		this.totalPed = totalPed;
 		this.dataPedido = dataPedido;
 		this.horaPedido = horaPedido;
+		this.status = status;
+		this.obsPedido = obsPedido;
+		this.nomeApPedido = nomeApPedido;
 	}
+
+
 
 	public Long getId() {
 		return id;
@@ -52,6 +62,39 @@ public class Pedido {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+	public String getObsPedido() {
+		return obsPedido;
+	}
+
+
+
+	public void setObsPedido(String obsPedido) {
+		this.obsPedido = obsPedido;
+	}
+
+
+
+	public String getNomeApPedido() {
+		return nomeApPedido;
+	}
+
+
+
+	public void setNomeApPedido(String nomeApPedido) {
+		this.nomeApPedido = nomeApPedido;
+	}
+
 
 
 	public String getNome() {
