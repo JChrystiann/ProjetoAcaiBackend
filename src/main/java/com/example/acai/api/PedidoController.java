@@ -38,11 +38,7 @@ public class PedidoController {
 		
 	}
 	
-	@GetMapping("/mesa/{mesa}")
-	public Iterable<Pedido> getPedidoporMesa(@PathVariable("mesa")Long mesa) {
-		return service.getPedidobyMesa(mesa);
-		
-	}
+	
 	@PostMapping
 	public String post(@RequestBody Pedido pedido) {
 		Pedido p= service.save(pedido);

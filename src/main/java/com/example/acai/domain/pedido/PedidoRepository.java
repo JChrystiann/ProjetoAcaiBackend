@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PedidoRepository extends CrudRepository<Pedido, Long>{
 
-	Iterable<Pedido> findByMesa(Long mesa);
+	//Iterable<Pedido> findByMesa(Long mesa);
 
 }

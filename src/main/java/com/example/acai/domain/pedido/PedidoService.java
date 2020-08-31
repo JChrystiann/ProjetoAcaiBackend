@@ -23,13 +23,6 @@ public class PedidoService {
 		return rep.findById(id);
 	}
 
-	public Iterable<Pedido> getPedidobyMesa(Long mesa) {
-		return rep.findByMesa(mesa);
-		
-	}
-
-	
-
 	public Pedido save(Pedido pedido) {
 		return rep.save(pedido);
 	
@@ -46,12 +39,13 @@ public class PedidoService {
 			pd.setColaborador(pedido.getColaborador());
 			pd.setDataPedido(pedido.getDataPedido());
 			pd.setHoraPedido(pedido.getHoraPedido());
-			pd.setMesa(pedido.getMesa());
+			pd.setvenda(pedido.getvenda());
 			pd.setNome(pedido.getNome());
 			pd.setTotalPed(pedido.getTotalPed());
 			pd.setNomeApPedido(pedido.getNomeApPedido());
 			pd.setStatus(pedido.getStatus());
 			pd.setObsPedido(pedido.getObsPedido());
+			
 			
 			rep.save(pd);
 			return pd;

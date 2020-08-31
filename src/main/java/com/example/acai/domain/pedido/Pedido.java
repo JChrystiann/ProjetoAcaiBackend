@@ -13,8 +13,8 @@ public class Pedido {
 	@Column(name="DescPedido")
 	private String nome;
 	
-	@Column(name="fkMesa")
-	private Long mesa;
+	@Column(name="fkVenda")
+	private Long venda;
 	
 	@Column(name="fkCliente")
 	private Long cliente;
@@ -36,12 +36,12 @@ public class Pedido {
 	
 	
 
-	public Pedido(Long id, String nome, Long mesa, Long cliente, Long colaborador, float totalPed, String dataPedido,
+	public Pedido(Long id, String nome, Long venda, Long cliente, Long colaborador, float totalPed, String dataPedido,
 			String horaPedido, String status, String obsPedido, String nomeApPedido) {
 		
 		this.id = id;
 		this.nome = nome;
-		this.mesa = mesa;
+		this.venda = venda;
 		this.cliente = cliente;
 		this.colaborador = colaborador;
 		this.totalPed = totalPed;
@@ -105,11 +105,13 @@ public class Pedido {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Long getMesa() {
-		return mesa;
+	
+	public Long getvenda() {
+		return venda;
 	}
-	public void setMesa(Long mesa) {
-		this.mesa = mesa;
+	
+	public void setvenda(Long venda) {
+		this.venda = venda;
 	}
 	public Long getCliente() {
 		return cliente;
