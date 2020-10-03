@@ -1,65 +1,22 @@
-package com.example.acai.api;
+package com.example.acai.api.controller;
 
-import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.acai.domain.pedido.Pedido;
-import com.example.acai.domain.pedido.PedidoService;
-
-
-
-
 @RestController
-@RequestMapping("/api/v1/pedidos")
-public class PedidoController {
-	@Autowired
-	private PedidoService service;
-	
-	@GetMapping()
-	public Iterable<Pedido> get() {
-		return service.getPedido();
-		
+@RequestMapping("/")
+public class IndexController {
+
+	@GetMapping
+	public String get() {
+		return "API DOS PEDIDOS";
 	}
-	
-	@GetMapping("/{id}")
-	public Optional<Pedido> get(@PathVariable("id")Long id) {
-		return service.getPedidobyId(id);
-		
-	}
-	
-	
-	@PostMapping
-	public String post(@RequestBody Pedido pedido) {
-		Pedido p= service.save(pedido);
-		
-		return "Pedido Realizado com Sucesso: Anote seu numero de Pedido: " + p.getId();
-	}
-	
-	@PutMapping("/{id}")
-	public String atualizar(@PathVariable("id") Long id,@RequestBody Pedido pedido) {
-		Pedido p = service.update(pedido,id);
-		return "Pedido: "+ p.getId() +" Atualizado com Sucesso";
-	
-	}
-	
-	@DeleteMapping("/{id}")
-	public String deletar(@PathVariable("id")Long id) {
-		 service.delete(id);
-		 return "Pedido Deletado com Sucesso";
-		
-	}
-	
 	
 	/*
 	@PostMapping("/login")

@@ -1,4 +1,4 @@
-package com.example.acai.api;
+package com.example.acai.api.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,49 +14,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.acai.domain.pedido.Pedido;
-import com.example.acai.domain.pedido.PedidoService;
+import com.example.acai.domain.model.Pedido;
+import com.example.acai.domain.service.PedidoService;
 import com.example.acai.domain.venda.ServicoVenda;
 import com.example.acai.domain.venda.Venda;
+import com.example.acai.produto.Produto;
+import com.example.acai.produto.ProdutoService;
 
 
 
 
 @RestController
-@RequestMapping("/api/v1/vendas")
-public class VendaController {
+@RequestMapping("/api/v1/produtos")
+public class ProdutoController {
 	@Autowired
-	private ServicoVenda serviceV;
+	private ProdutoService serviceP;
 	
 	@GetMapping()
-	public Iterable<Venda> get() {
-		return serviceV.getVenda();
-		
+	public Iterable<Produto> get() {
+		return serviceP.getProduto();
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Venda> get(@PathVariable("id")Long id) {
-		return serviceV.getVendabyId(id);
-		
+	public Optional<Produto> get(@PathVariable("id")Long id) {
+		return serviceP.getProdutobyId(id);
 	}
-	
-	
-	
-	
 	
 	@PostMapping
-	public String post(@RequestBody Venda venda) {
-		Venda v= serviceV.save(venda);
-		
-		return "Venda Nº " + v.getIdVenda() + " Cadastrada com Sucesso:  ";
-	}
-	
-	 
-	@PutMapping("/{id}")
-	public String atualizar(@PathVariable("id") Long id,@RequestBody Venda venda) {
-		Venda v = serviceV.update(venda,id);
-		return "Pedido: "+ v.getIdVenda() +" Atualizada com Sucesso";
-	
+	public String post(@RequestBody Produto produto) {
+		Produto v= serviceP.save(produto);
+		return "Cadastrado com Sucesso";
 	}
 	
 	/*

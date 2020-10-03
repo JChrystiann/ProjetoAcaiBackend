@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import com.example.acai.domain.pedido.Pedido;
+import com.example.acai.domain.model.Pedido;
 
 @Service
 public class ServicoVenda {
